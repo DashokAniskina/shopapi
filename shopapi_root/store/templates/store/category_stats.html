@@ -1,0 +1,14 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Статистика по категориям</h1>
+<table class="table">
+  <thead><tr><th>Категория</th><th>Товаров</th><th>Продано единиц</th><th>Выручка</th></tr></thead>
+  <tbody>
+  {% for r in rows %}
+    <tr {% if r.3 == top_revenue and top_revenue > 0 %}class="table-success fw-bold"{% endif %}>
+      <td>{{ r.0 }}</td><td>{{ r.1 }}</td><td>{{ r.2 }}</td><td>{{ r.3 }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

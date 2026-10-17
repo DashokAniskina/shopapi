@@ -1,0 +1,16 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Товары</h1>
+<a class="btn btn-primary mb-3" href="{% url 'product_add' %}">+ Добавить товар</a>
+<table class="table table-striped">
+  <thead><tr><th>Наименование</th><th>Категория</th><th>Цена</th><th>Остаток</th><th></th></tr></thead>
+  <tbody>
+  {% for p in products %}
+    <tr>
+      <td>{{ p.1 }}</td><td>{{ p.2 }}</td><td>{{ p.3 }}</td><td>{{ p.4 }}</td>
+      <td><a class="btn btn-sm btn-outline-secondary" href="{% url 'product_price' p.0 %}">Изменить цену</a></td>
+    </tr>
+  {% empty %}<tr><td colspan="5">Нет товаров</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

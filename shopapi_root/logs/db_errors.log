@@ -1,0 +1,51 @@
+2026-10-17 10:20:34,072 ERROR DB error in sp_product_add params=['Лонгслив', 3, 2761.0, 20]
+Traceback (most recent call last):
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 78, in execute
+    return self.cursor.execute(query, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\MySQLdb\cursors.py", line 219, in execute
+    res = self._query(mogrified_query)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\MySQLdb\cursors.py", line 498, in _query
+    db.query(q)
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\MySQLdb\connections.py", line 302, in query
+    _mysql.connection.query(self, query)
+MySQLdb.OperationalError: (1414, 'OUT or INOUT argument 5 for routine shop_django.sp_product_add is not a variable or NEW pseudo-variable in BEFORE trigger')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\store\db.py", line 22, in call_procedure
+    cur.execute(sql, args)
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 78, in execute
+    return self.cursor.execute(query, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\MySQLdb\cursors.py", line 219, in execute
+    res = self._query(mogrified_query)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\MySQLdb\cursors.py", line 498, in _query
+    db.query(q)
+  File "C:\Users\СТУДЕНТ\Desktop\shopapi_root\.venv\Lib\site-packages\MySQLdb\connections.py", line 302, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1414, 'OUT or INOUT argument 5 for routine shop_django.sp_product_add is not a variable or NEW pseudo-variable in BEFORE trigger')
+

@@ -1,0 +1,15 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Заказы клиента #{{ customer_id }}</h1>
+<table class="table table-striped">
+  <thead><tr><th>ID</th><th>Дата</th><th>Сумма</th><th>Средний чек</th><th></th></tr></thead>
+  <tbody>
+  {% for o in orders %}
+    <tr>
+      <td>{{ o.0 }}</td><td>{{ o.1 }}</td><td>{{ o.2 }}</td><td>{{ o.3 }}</td>
+      <td><a class="btn btn-sm btn-outline-primary" href="{% url 'order_detail' o.0 %}">Детали</a></td>
+    </tr>
+  {% empty %}<tr><td colspan="5">Заказов нет</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

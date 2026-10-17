@@ -1,0 +1,10 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Изменить цену товара #{{ pk }}</h1>
+<form method="post">{% csrf_token %}
+    <div class="mb-3">
+        <label>Новая цена</label>
+        <input class="form-control" type="number" step="0.01" name="price" required</div>
+        <button class="btn btn-succes">Сохранить</button>
+</form>
+{% endblock %}

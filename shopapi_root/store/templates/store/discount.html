@@ -1,0 +1,30 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Расчёт скидки</h1>
+<form method="post">{% csrf_token %}
+  <div class="mb-3">
+    <label>Клиент</label>
+    <select class="form-select" name="customer_id" required>
+      <option value="" disabled selected>-- Выберите клиента --</option>
+      {% for c in customers %}
+        <option value="{{ c.0 }}" {% if result and result.customer_id == c.0 %}selected{% endif %}>
+            {{ c.2 }} {{ c.1 }} (ID: {{ c.0 }})
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  
+  <div class="mb-3">
+    <label>Сумма</label>
+    <input class="form-control" type="number" step="0.01" name="amount" required>
+  </div>
+  
+  <button class="btn btn-success">Рассчитать</button>
+</form>
+
+{% if result %}
+<div class="alert alert-info mt-3">
+  Клиент #{{ result.customer_id }}: сумма {{ result.amount }}, скидка <b>{{ result.percent }}%</b>, итого <b>{{ result.total }}</b>
+</div>
+{% endif %}
+{% endblock %}
